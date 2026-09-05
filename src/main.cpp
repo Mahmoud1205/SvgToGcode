@@ -195,13 +195,11 @@ void handleArgs(I32 inArgc, char* inArgv[])
 
 		if (strncmp(arg, "-f", 2) == 0)
 		{
-			if (i == inArgc)
+			if (++i == inArgc)
 			{
 				eputs("Error: Incomplete argument '-f'.");
 				usageExit(inArgv[0]);
 			}
-
-			i++;
 
 			// we use nsvg's atof function instead of std's to avoid locale issues
 			gState.mFeedrateXY = (F32)nsvg__atof(inArgv[i]);
