@@ -5,6 +5,7 @@
 
 *.nc
 *.svg
+*.ini
 
 # User-specific files
 *.rsuser
