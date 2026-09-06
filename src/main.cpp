@@ -39,6 +39,8 @@ I32 main(I32 argc, char* argv[])
 {
 	handleArgs(argc, argv);
 
+	insertCmd("G21");
+
 	NSVGimage* svg = gState.mSvg;
 
 	for (NSVGshape* shape = svg->shapes; shape != nullptr; shape = shape->next)
