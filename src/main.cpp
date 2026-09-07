@@ -101,8 +101,8 @@ void usageExit(const char* inArgv0)
 
 void handleArgs(I32 inArgc, char* inArgv[])
 {
-	U32 numRequiredArgs = 0;
-	const U32 kExpectedNumRequiredArgs = 2; // -i and -o
+	bool bInputGiven = false;
+	bool bOutputGiven = false;
 
 	for (I32 i = 1; i < inArgc; i++)
 	{
@@ -127,7 +127,7 @@ void handleArgs(I32 inArgc, char* inArgv[])
 			}
 			fclose(input);
 
-			numRequiredArgs++;
+			bInputGiven = true;
 
 			continue;
 		}
@@ -147,7 +147,7 @@ void handleArgs(I32 inArgc, char* inArgv[])
 				usageExit(inArgv[0]);
 			}
 
-			numRequiredArgs++;
+			bOutputGiven = true;
 
 			continue;
 		}
@@ -217,7 +217,7 @@ void handleArgs(I32 inArgc, char* inArgv[])
 		}
 	}
 
-	if (numRequiredArgs != kExpectedNumRequiredArgs)
+	if (!bInputGiven || !bOutputGiven)
 	{
 		eputs("Error: Missing arguments. -i and -o are required.");
 		usageExit(inArgv[0]);
